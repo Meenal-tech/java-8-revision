@@ -1,7 +1,4 @@
-import java.awt.image.ImageProducer;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -15,13 +12,15 @@ public class Main {
         filteringTheCourse(courses);
 
         // mapping the values
-//        mapTheEvenSquareValues(l);
+        mapTheEvenSquareValues(l);
 
         // printing the numbers using predicate
-//        printEvenNumbers(l);
+        printEvenNumbers(l);
 
         // collecting the stream elements using collectors
-//        usingCollectors(l);
+        usingCollectors(l);
+
+        System.out.println(distinctCourses(courses).toString());
 
     }
 
@@ -39,7 +38,7 @@ public class Main {
 
         list.stream()
                 .filter(evenNumber)
-                .forEach(System.out :: println);
+                .forEach(System.out::println);
     }
 
     public static void mapTheEvenSquareValues(List<Integer> list) {
@@ -47,7 +46,7 @@ public class Main {
         list.stream()
                 .filter(n -> n % 2 == 0)
                 .map(n -> Math.pow(n, 2))
-                .forEach(System.out :: println);
+                .forEach(System.out::println);
     }
 
     public static List<Integer> filteringTheCourse(List<String> courses) {
@@ -59,14 +58,10 @@ public class Main {
                 .collect(Collectors.toList());
     }
 
-    public static void distinctCourses(List<String> courses) {
+    public static List<String> distinctCourses(List<String> courses) {
         System.out.println("#distinctCourses - ");
-        courses.stream()
+        return courses.stream()
                 .distinct()
-                .collect(Collectors.toList())
-                .toString();
+                .collect(Collectors.toList());
     }
-
-
-
 }
